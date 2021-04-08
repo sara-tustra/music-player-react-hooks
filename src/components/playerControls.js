@@ -1,13 +1,20 @@
 import React from "react";
+import { Backward, Forward, Pause, Play, Random, Repeat } from "./icons";
 import './style.css'
 
-function PlayerControls() {
+function PlayerControls(props) {
   return (
     <div>
       <div className="controls">
-        <button className="btn"><i class="fas fa-backward"></i></button>
-        <button className="btn"><i class="fas fa-play"></i></button>
-        <button className="btn"><i class="fas fa-forward"></i></button>
+      <button className="btn" > <Random/> </button>
+        <button className="btn" onClick={() => props.SkipSong(false)}> <Backward/> </button>
+        <button className="btn"onClick={()=> props.setIsPlaying(!props.isPlaying)}>
+          {
+            props.isPlaying ? <Pause/> : <Play/>
+          }
+          </button>
+        <button className="btn"onClick={() => props.SkipSong()}> <Forward/></button>
+        <button className="btn"> <Repeat/> </button>
       </div>
     </div>
   );
