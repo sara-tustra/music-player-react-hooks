@@ -4,10 +4,15 @@ import React from 'react'
 
 
 
-const ListOfSongs = ({songs}) => {
-   const renderListOfSongs = Object.keys(songs).map((d, key) =>{
+const ListOfSongs = (props) => {
+  const playSongFromList =(i) =>{
+    props.setCurrentSongIndex(i);
+    props.setIsPlaying(true);
+  }
+
+   const renderListOfSongs = Object.keys(props.songs).map((d, key) =>{
      return (
-      <tr key={key}><th className="p-3 m-4" >{songs[key].id}. {songs[key].name}</th></tr>
+      <tr key={key} onClick={()=> playSongFromList(key)}><th className="p-3 m-4" >{props.songs[key].id}. {props.songs[key].name}</th></tr>
      )
    })
         

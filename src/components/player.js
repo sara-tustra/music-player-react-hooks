@@ -24,7 +24,7 @@ const Player = (props) => {
 
         if (temp > props.songs.length - 1) {
           temp = 0;
-          console.log(Object.keys(props.songs))
+          console.log(Object.keys(props.songs));
         }
 
         return temp;
@@ -49,7 +49,12 @@ const Player = (props) => {
         src={props.songs[props.currentSongIndex].url}
       ></audio>
       <ListOfSongs
-      songs = {props.songs}/>
+        songs={props.songs}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+        setCurrentSongIndex={props.setCurrentSongIndex}
+
+      />
       <h4 className="m-3 p-3">Playing Now</h4>
       <PlayerDetails song={props.songs[props.currentSongIndex]} />
       <PlayerControls
